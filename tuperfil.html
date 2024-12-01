@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Perfil de Usuario</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                height: 100vh;
+                margin-top: 50px;
+            }
+
+            .profile-section {
+                width: 300px;
+                background-color: #f0f0f0;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-bottom: 15px;
+            }
+
+            .profile-description {
+                text-align: center;
+                margin-bottom: 15px;
+                color: #333;
+            }
+
+            .profile-stats {
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .edit-profile-btn {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .edit-profile-btn:hover {
+                background-color: #0056b3;
+            }
+
+            .content-section {
+                flex-grow: 1;
+                background-color: white;
+                padding: 20px;
+            }
+
+
+            /* Estilos barra de navegación */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #006699;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-icon {
+            color: #006699;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #E6F2FF;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .navbar-icon:hover {
+            background-color: #B8DDFF;
+        }
+
+        /* ---- */
+       
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .publish-btn {
+            display: block;
+            width: 200px;
+            margin: 0 auto 30px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .publish-btn:hover {
+            background-color: #45a049;
+        }
+
+        .animal-details {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 90%;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .animal-details:hover {
+            transform: scale(1.02);
+        }
+
+        .animal-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .animal-content {
+            flex-grow: 1;
+        }
+
+        .animal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .animal-name {
+            margin: 0;
+            font-size: 1.8em;
+            color: #333;
+        }
+
+        .badge {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .animal-age-type {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .animal-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .info-row {
+            display: flex;
+        }
+
+        .info-label {
+            font-weight: bold;
+            margin-right: 10px;
+            color: #444;
+            width: 100px;
+        }
+
+        .info-value {
+            color: #666;
+        }
+
+        .description {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .contact-btn {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .contact-btn:hover {
+            background-color: #0056b3;
+        }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Barra de navegación -->
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' fill='%23006699'><path d='M25 10c-8.284 0-15 6.716-15 15 0 8.284 6.716 15 15 15 8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15zm7.5 20c-2.485 0-4.5-2.015-4.5-4.5s2.015-4.5 4.5-4.5 4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5zm-15 0c-2.485 0-4.5-2.015-4.5-4.5s2.015-4.5 4.5-4.5 4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5z'/></svg>"
+                    alt="PawsTrack">
+                <a href="index.html">PawsTrack</a>
+            </div>
+            <div class="navbar-icons">
+                <a href="login.html" class="navbar-icon">▶</a>
+                <a href="tuperfil.html" class="navbar-icon">👤</a>
+                <a href="#chat" class="navbar-icon">💬</a>
+                <a href="#notificaciones" class="navbar-icon">🔔</a>
+            </div>
+        </nav>
+
+
+        <div class="profile-section">
+            <img src="/api/placeholder/150/150" alt="Foto de perfil" class="profile-photo">
+
+            <div class="profile-description">
+                <h2>Nombre</h2>
+                <h2>Apellido</h2>
+
+                <p>Breve descripción sobre mí. Mis intereses, pasiones y algo que me represente.</p>
+            </div>
+
+            <div class="profile-stats">
+                <div>
+                    <strong>Publicaciones</strong>
+                    <p>42</p>
+                </div>
+                <div>
+                    <strong>Seguidores</strong>
+                    <p>1.2K</p>
+                </div>
+            </div>
+
+            <a href="editarperfil.html" class="edit-profile-btn">Editar Perfil</a><br>
+            <!-- <a href="posteoform.html" class="publish-btn">Publicar Animal</a> -->
+        </div>
+
+        <div class="content-section">
+            <div class="page-header">
+                <h1>Últimos Posteos en Adopción</h1>
+                <p>Encuentra tu nuevo mejor amigo</p>
+            </div>
+            
+            <a href="posteoform.html" class="publish-btn">Publicar Animal</a>
+            
+            <div class="animals-container">
+                <div class="animal-details">
+                    <img src="/api/placeholder/200/200" alt="Luna" class="animal-image">
+                    <div class="animal-content">
+                        <div class="animal-header">
+                            <h1 class="animal-name">Luna</h1>
+                            <span class="badge">En adopción</span>
+                        </div>
+                        <div class="animal-age-type">Perrita • 2 años</div>
+                        <div class="animal-info">
+                            <div class="info-row">
+                                <div class="info-label">Raza:</div>
+                                <div class="info-value">Mestiza</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Tamaño:</div>
+                                <div class="info-value">Mediano</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Género:</div>
+                                <div class="info-value">Hembra</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Vacunas:</div>
+                                <div class="info-value">Al día</div>
+                            </div>
+                        </div>
+                        <div class="description">
+                            Luna es una perrita juguetona y cariñosa. Le encanta jugar con pelotas y es muy sociable con niños y
+                            otros perros. Busca una familia que le pueda dar mucho amor y atención.
+                        </div>
+                        <a href="#" class="contact-btn">Contactar al publicador</a>
+                    </div>
+                </div>
+            
+                <div class="animal-details">
+                    <img src="/api/placeholder/200/200" alt="Max" class="animal-image">
+                    <div class="animal-content">
+                        <div class="animal-header">
+                            <h1 class="animal-name">Max</h1>
+                            <span class="badge">En adopción</span>
+                        </div>
+                        <div class="animal-age-type">Perro • 4 años</div>
+                        <div class="animal-info">
+                            <div class="info-row">
+                                <div class="info-label">Raza:</div>
+                                <div class="info-value">Labrador</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Tamaño:</div>
+                                <div class="info-value">Grande</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Género:</div>
+                                <div class="info-value">Macho</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Vacunas:</div>
+                                <div class="info-value">Al día</div>
+                            </div>
+                        </div>
+                        <div class="description">
+                            Max es un perro energético y leal. Ideal para familias activas que disfruten de largas caminatas y
+                            juegos al aire libre. Necesita espacio y mucha atención.
+                        </div>
+                        <a href="#" class="contact-btn">Contactar al publicador</a>
+                    </div>
+                </div>
+            
+                <div class="animal-details">
+                    <img src="/api/placeholder/200/200" alt="Michi" class="animal-image">
+                    <div class="animal-content">
+                        <div class="animal-header">
+                            <h1 class="animal-name">Michi</h1>
+                            <span class="badge">En adopción</span>
+                        </div>
+                        <div class="animal-age-type">Gato • 1 año</div>
+                        <div class="animal-info">
+                            <div class="info-row">
+                                <div class="info-label">Raza:</div>
+                                <div class="info-value">Siamés</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Tamaño:</div>
+                                <div class="info-value">Pequeño</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Género:</div>
+                                <div class="info-value">Macho</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Vacunas:</div>
+                                <div class="info-value">Al día</div>
+                            </div>
+                        </div>
+                        <div class="description">
+                            Michi es un gato cariñoso y juguetón. Le encanta dormir en lugares altos y recibir mimos de sus humanos.
+                            Perfecto para apartamentos pequeños.
+                        </div>
+                        <a href="#" class="contact-btn">Contactar al publicador</a>
+                    </div>
+                </div>
+            
+                <div class="animal-details">
+                    <img src="/api/placeholder/200/200" alt="Bella" class="animal-image">
+                    <div class="animal-content">
+                        <div class="animal-header">
+                            <h1 class="animal-name">Bella</h1>
+                            <span class="badge">En adopción</span>
+                        </div>
+                        <div class="animal-age-type">Gata • 3 años</div>
+                        <div class="animal-info">
+                            <div class="info-row">
+                                <div class="info-label">Raza:</div>
+                                <div class="info-value">Persa</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Tamaño:</div>
+                                <div class="info-value">Pequeña</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Género:</div>
+                                <div class="info-value">Hembra</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Vacunas:</div>
+                                <div class="info-value">Al día</div>
+                            </div>
+                        </div>
+                        <div class="description">
+                            Bella es una gata tranquila y elegante. Prefiere ambientes calm y le gusta observar desde su lugar
+                            favorito. Ideal para personas que buscan una mascota serena.
+                        </div>
+                        <a href="#" class="contact-btn">Contactar al publicador</a>
+                    </div>
+                </div>
+            
+                <div class="animal-details">
+                    <img src="/api/placeholder/200/200" alt="Rocky" class="animal-image">
+                    <div class="animal-content">
+                        <div class="animal-header">
+                            <h1 class="animal-name">Rocky</h1>
+                            <span class="badge">En adopción</span>
+                        </div>
+                        <div class="animal-age-type">Perro • 5 años</div>
+                        <div class="animal-info">
+                            <div class="info-row">
+                                <div class="info-label">Raza:</div>
+                                <div class="info-value">Pastor Alemán</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Tamaño:</div>
+                                <div class="info-value">Grande</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Género:</div>
+                                <div class="info-value">Macho</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Vacunas:</div>
+                                <div class="info-value">Al día</div>
+                            </div>
+                        </div>
+                        <div class="description">
+                            Rocky es un perro inteligente y protector. Entrenado y muy obediente, busca una familia que valore su
+                            lealtad y le proporcione un hogar con espacio y actividad.
+                        </div>
+                        <a href="#" class="contact-btn">Contactar al publicador</a>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </body>
+
+</html>

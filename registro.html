@@ -86,10 +86,75 @@
             color: #006699;
             text-decoration: none;
         }
+
+
+         .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #006699;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-icon {
+            color: #006699;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #E6F2FF;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .navbar-icon:hover {
+            background-color: #B8DDFF;
+        }
+
     </style>
 </head>
 <body>
     <div class="signup-container">
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' fill='%23006699'><path d='M25 10c-8.284 0-15 6.716-15 15 0 8.284 6.716 15 15 15 8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15zm7.5 20c-2.485 0-4.5-2.015-4.5-4.5s2.015-4.5 4.5-4.5 4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5zm-15 0c-2.485 0-4.5-2.015-4.5-4.5s2.015-4.5 4.5-4.5 4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5z'/></svg>"
+                    alt="PawsTrack">
+                <a href="index.html">PawsTrack</a>
+        
+            </div>
+            <div class="navbar-icons">
+                <a href="login.html" class="navbar-icon">▶</a>
+                <a href="tuperfil.html" class="navbar-icon">👤</a>
+                <a href="#chat" class="navbar-icon">💬</a>
+                <a href="#notificaciones" class="navbar-icon">🔔</a>
+            </div>
+        </nav>
         <h1>PawsTrack</h1>
         <form>
             <div class="input-row">
@@ -112,7 +177,7 @@
             </div>
             <button type="submit" class="signup-btn">Registrarse</button>
         </form>
-        <a href="#" class="login-link">¿Ya tienes cuenta? Inicia sesión</a>
+        <a href="login.html" class="login-link">¿Ya tienes cuenta? Inicia sesión</a>
     </div>
 </body>
 </html>
