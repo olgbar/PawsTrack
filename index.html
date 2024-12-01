@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>PawsTrack - Adopción de Mascotas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F0F4F8;
+            line-height: 1.6;
+            padding-top: 70px; /* Espacio para la barra de navegación */
+        }
+        /* Estilos barra de navegación */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #006699;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-icon {
+            color: #006699;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #E6F2FF;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .navbar-icon:hover {
+            background-color: #B8DDFF;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 105, 156, 0.1);
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-content {
+            color: white;
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .carousel-dot.active {
+            background-color: white;
+        }
+
+        /* Advertising Banner */
+        .ad-banner {
+            background-color: #006699;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        /* Top 10 Adoption List */
+        .adoption-ranking {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 105, 156, 0.1);
+        }
+
+        .ranking-title {
+            color: #006699;
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .adoption-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .adoption-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #F0F0F0;
+        }
+
+        .adoption-item:last-child {
+            border-bottom: none;
+        }
+
+        .animal-thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            margin-right: 20px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .animal-info {
+            flex-grow: 1;
+        }
+
+        .animal-name {
+            font-weight: bold;
+            color: #006699;
+        }
+
+        .waiting-time {
+            color: #4A90E2;
+            font-size: 0.9rem;
+        }
+
+        .adopt-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        /* Botón flotante de publicación */
+        .post-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-decoration: none;
+            font-size: 30px;
+            z-index: 1000;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+        <!-- Barra de navegación -->
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' fill='%23006699'><path d='M25 10c-8.284 0-15 6.716-15 15 0 8.284 6.716 15 15 15 8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15zm7.5 20c-2.485 0-4.5-2.015-4.5-4.5s2.015-4.5 4.5-4.5 4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5zm-15 0c-2.485 0-4.5-2.015-4.5-4.5s2.015-4.5 4.5-4.5 4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5z'/></svg>" alt="PawsTrack">
+                PawsTrack
+            </div>
+            <div class="navbar-icons">
+                <a href="#perfil" class="navbar-icon">👤</a>
+                <a href="#chat" class="navbar-icon">💬</a>
+                <a href="#notificaciones" class="navbar-icon">🔔</a>
+            </div>
+        </nav>
+    
+        <!-- Botón flotante de publicación -->
+        <a href="#publicar-mascota" class="post-button">+</a>
+    
+        <div class="container">
+    <div class="container">
+        <!-- Carousel -->
+        <div class="carousel">
+            <div class="carousel-slide active" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1 1\" preserveAspectRatio=\"none\"><rect width=\"1\" height=\"1\" fill=\"%23006699\"/></svg>')">
+                <div class="carousel-content">
+                    <h2>Encuentra tu Nuevo Mejor Amigo</h2>
+                    <p>Miles de mascotas esperan por un hogar. ¡Cambia una vida hoy!</p>
+                </div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1 1\" preserveAspectRatio=\"none\"><rect width=\"1\" height=\"1\" fill=\"%234CAF50\"/></svg>')">
+                <div class="carousel-content">
+                    <h2>Adopción Responsable</h2>
+                    <p>Cada adopción es un acto de amor que cambia dos vidas: la de la mascota y la tuya.</p>
+                </div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1 1\" preserveAspectRatio=\"none\"><rect width=\"1\" height=\"1\" fill=\"%23FF5722\"/></svg>')">
+                <div class="carousel-content">
+                    <h2>Historias de Esperanza</h2>
+                    <p>Cada mascota tiene una historia única. Descubre tu próximo compañero de vida.</p>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <div class="carousel-dot active"></div>
+                <div class="carousel-dot"></div>
+                <div class="carousel-dot"></div>
+            </div>
+        </div>
+
+        <!-- Advertising Banner -->
+        <div class="ad-banner">
+            <h3>¡Adopta, No Compres!</h3>
+            <p>Cada adopción ayuda a reducir el número de animales en situación de calle</p>
+        </div>
+
+        <!-- Top 10 Adoption Ranking -->
+        <div class="adoption-ranking">
+            <h2 class="ranking-title">Top 10 - Animales Esperando Hogar</h2>
+            <ul class="adoption-list">
+                <li class="adoption-item">
+                    <div class="animal-thumbnail" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1 1\" preserveAspectRatio=\"none\"><rect width=\"1\" height=\"1\" fill=\"%23B8DDFF\"/></svg>')"></div>
+                    <div class="animal-info">
+                        <div class="animal-name">Luna</div>
+                        <div class="waiting-time">Esperando 352 días</div>
+                    </div>
+                    <a href="#" class="adopt-btn">Adoptar</a>
+                </li>
+                <li class="adoption-item">
+                    <div class="animal-thumbnail" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1 1\" preserveAspectRatio=\"none\"><rect width=\"1\" height=\"1\" fill=\"%23B8DDFF\"/></svg>')"></div>
+                    <div class="animal-info">
+                        <div class="animal-name">Max</div>
+                        <div class="waiting-time">Esperando 347 días</div>
+                    </div>
+                    <a href="#" class="adopt-btn">Adoptar</a>
+                </li>
+                <!-- Más elementos de la lista de adopción -->
+                <li class="adoption-item">
+                    <div class="animal-thumbnail" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1 1\" preserveAspectRatio=\"none\"><rect width=\"1\" height=\"1\" fill=\"%23B8DDFF\"/></svg>')"></div>
+                    <div class="animal-info">
+                        <div class="animal-name">Canela</div>
+                        <div class="waiting-time">Esperando 340 días</div>
+                    </div>
+                    <a href="#" class="adopt-btn">Adoptar</a>
+                </li>
+                <!-- Continúa con más elementos hasta 10 -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Simple Carousel JavaScript
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let currentSlide = 0;
+
+        function changeSlide(newSlide) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = newSlide;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => changeSlide(index));
+        });
+
+        // Auto-slide functionality
+        setInterval(() => {
+            let nextSlide = (currentSlide + 1) % slides.length;
+            changeSlide(nextSlide);
+        }, 5000);
+    </script>
+</body>
+</html>

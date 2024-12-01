@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PawsTrack - Adopción de Mascota</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F0F4F8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .animal-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 105, 156, 0.1);
+            width: 800px;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .animal-image {
+            width: 50%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1" preserveAspectRatio="none"><rect width="1" height="1" fill="%23B8DDFF"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .animal-details {
+            width: 50%;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .animal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .animal-name {
+            color: #006699;
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .animal-age-type {
+            color: #4A90E2;
+            font-size: 1rem;
+        }
+
+        .animal-info {
+            margin-bottom: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .info-label {
+            color: #006699;
+            font-weight: bold;
+            width: 120px;
+        }
+
+        .info-value {
+            color: #333;
+        }
+
+        .description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-btn {
+            background-color: #006699;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-btn:hover {
+            background-color: #004C7A;
+        }
+
+        .badge {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="animal-card">
+        <div class="animal-image" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns="
+            http://www.w3.org/2000/svg" viewBox="0 0 1 1" preserveAspectRatio="none">
+            <rect width="1" height="1" fill="%23006699" fill-opacity="0.2" /></svg>')">
+            <!-- Aquí iría la imagen real del animal -->
+        </div>
+        <div class="animal-details">
+            <div>
+                <div class="animal-header">
+                    <h1 class="animal-name">Luna</h1>
+                    <span class="badge">En adopción</span>
+                </div>
+                <div class="animal-age-type">Perrita • 2 años</div>
+
+                <div class="animal-info">
+                    <div class="info-row">
+                        <div class="info-label">Raza:</div>
+                        <div class="info-value">Mestiza</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Tamaño:</div>
+                        <div class="info-value">Mediano</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Género:</div>
+                        <div class="info-value">Hembra</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Vacunas:</div>
+                        <div class="info-value">Al día</div>
+                    </div>
+                </div>
+
+                <div class="description">
+                    Luna es una perrita juguetona y cariñosa. Le encanta jugar con pelotas y es muy sociable con niños y
+                    otros perros. Busca una familia que le pueda dar mucho amor y atención.
+                </div>
+            </div>
+
+            <a href="#" class="contact-btn">Contactar al publicador</a>
+        </div>
+    </div>
+</body>
+
+</html>
