@@ -23,14 +23,16 @@
             box-shadow: 0 10px 25px rgba(0, 105, 156, 0.1);
             width: 800px;
             display: flex;
+            justify-content: space-evenly;
             overflow: hidden;
         }
 
         .animal-image {
-            width: 50%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1" preserveAspectRatio="none"><rect width="1" height="1" fill="%23B8DDFF"/></svg>');
-            background-size: cover;
-            background-position: center;
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 20px;
         }
 
         .animal-details {
@@ -177,11 +179,9 @@
         </div>
     </nav>
     <div class="animal-card">
-        <div class="animal-image" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns="
-            http://www.w3.org/2000/svg" viewBox="0 0 1 1" preserveAspectRatio="none">
-            <rect width="1" height="1" fill="%23006699" fill-opacity="0.2" /></svg>')">
-            <!-- Aquí iría la imagen real del animal -->
-        </div>
+        
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa_an4O45YcCJvuOLhYKOhpR0wCRsLMg_sillIyLOsHnu_HFGoIhfdmDjh8bgpw5vO5yM&usqp=CAU"
+            alt="Luna" class="animal-image">
         <div class="animal-details">
             <div>
                 <div class="animal-header">

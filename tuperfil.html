@@ -16,6 +16,7 @@
 
             .profile-section {
                 width: 300px;
+                height: 100vh;
                 background-color: #f0f0f0;
                 padding: 20px;
                 display: flex;
@@ -53,6 +54,7 @@
                 border-radius: 5px;
                 cursor: pointer;
                 transition: background-color 0.3s ease;
+                text-decoration: none;
             }
 
             .edit-profile-btn:hover {
@@ -67,180 +69,180 @@
 
 
             /* Estilos barra de navegación */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
+            .navbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
 
-        .navbar-logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #006699;
-        }
+            .navbar-logo {
+                display: flex;
+                align-items: center;
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #006699;
+            }
 
-        .navbar-logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
+            .navbar-logo img {
+                height: 40px;
+                margin-right: 10px;
+            }
 
-        .navbar-icons {
-            display: flex;
-            gap: 15px;
-        }
+            .navbar-icons {
+                display: flex;
+                gap: 15px;
+            }
 
-        .navbar-icon {
-            color: #006699;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: #E6F2FF;
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
+            .navbar-icon {
+                color: #006699;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                background-color: #E6F2FF;
+                border-radius: 50%;
+                transition: background-color 0.3s;
+            }
 
-        .navbar-icon:hover {
-            background-color: #B8DDFF;
-        }
+            .navbar-icon:hover {
+                background-color: #B8DDFF;
+            }
 
-        /* ---- */
-       
-        .page-header {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #333;
-        }
+            /* ---- */
+        
+            .page-header {
+                text-align: center;
+                margin-bottom: 30px;
+                color: #333;
+            }
 
-        .publish-btn {
-            display: block;
-            width: 200px;
-            margin: 0 auto 30px;
-            padding: 10px 15px;
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
+            .publish-btn {
+                display: block;
+                width: 200px;
+                margin: 0 auto 30px;
+                padding: 10px 15px;
+                background-color: #4CAF50;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 5px;
+                font-weight: bold;
+                transition: background-color 0.3s ease;
+            }
 
-        .publish-btn:hover {
-            background-color: #45a049;
-        }
+            .publish-btn:hover {
+                background-color: #45a049;
+            }
 
-        .animal-details {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            width: 90%;
-            padding: 20px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            transition: transform 0.3s ease;
-        }
+            .animal-details {
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                width: 90%;
+                padding: 20px;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                transition: transform 0.3s ease;
+            }
 
-        .animal-details:hover {
-            transform: scale(1.02);
-        }
+            .animal-details:hover {
+                transform: scale(1.02);
+            }
 
-        .animal-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 10px;
-            object-fit: cover;
-            margin-right: 20px;
-        }
+            .animal-image {
+                width: 120px;
+                height: 120px;
+                border-radius: 10px;
+                object-fit: cover;
+                margin-right: 20px;
+            }
 
-        .animal-content {
-            flex-grow: 1;
-        }
+            .animal-content {
+                flex-grow: 1;
+            }
 
-        .animal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
+            .animal-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
 
-        .animal-name {
-            margin: 0;
-            font-size: 1.8em;
-            color: #333;
-        }
+            .animal-name {
+                margin: 0;
+                font-size: 1.8em;
+                color: #333;
+            }
 
-        .badge {
-            background-color: #28a745;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 0.9em;
-        }
+            .badge {
+                background-color: #28a745;
+                color: white;
+                padding: 5px 10px;
+                border-radius: 4px;
+                font-size: 0.9em;
+            }
 
-        .animal-age-type {
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-        }
+            .animal-age-type {
+                color: #666;
+                margin-bottom: 15px;
+                font-size: 1.1em;
+            }
 
-        .animal-info {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 15px;
-        }
+            .animal-info {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                margin-bottom: 15px;
+            }
 
-        .info-row {
-            display: flex;
-        }
+            .info-row {
+                display: flex;
+            }
 
-        .info-label {
-            font-weight: bold;
-            margin-right: 10px;
-            color: #444;
-            width: 100px;
-        }
+            .info-label {
+                font-weight: bold;
+                margin-right: 10px;
+                color: #444;
+                width: 100px;
+            }
 
-        .info-value {
-            color: #666;
-        }
+            .info-value {
+                color: #666;
+            }
 
-        .description {
-            font-size: 1em;
-            color: #555;
-            margin-bottom: 15px;
-        }
+            .description {
+                font-size: 1em;
+                color: #555;
+                margin-bottom: 15px;
+            }
 
-        .contact-btn {
-            display: block;
-            width: 200px;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            margin-top: 15px;
-        }
+            .contact-btn {
+                display: block;
+                width: 200px;
+                padding: 10px;
+                background-color: #007bff;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+                margin-top: 15px;
+            }
 
-        .contact-btn:hover {
-            background-color: #0056b3;
-        }
+            .contact-btn:hover {
+                background-color: #0056b3;
+            }
         </style>
     </head>
 
@@ -263,7 +265,7 @@
 
 
         <div class="profile-section">
-            <img src="/api/placeholder/150/150" alt="Foto de perfil" class="profile-photo">
+            <img src="https://cdn-icons-png.freepik.com/512/7718/7718888.png" alt="Foto de perfil" class="profile-photo">
 
             <div class="profile-description">
                 <h2>Nombre</h2>
@@ -284,7 +286,7 @@
             </div>
 
             <a href="editarperfil.html" class="edit-profile-btn">Editar Perfil</a><br>
-            <!-- <a href="posteoform.html" class="publish-btn">Publicar Animal</a> -->
+            <a href="#" class="publish-btn">Ver tus Publicaciones</a>
         </div>
 
         <div class="content-section">
@@ -297,7 +299,7 @@
             
             <div class="animals-container">
                 <div class="animal-details">
-                    <img src="/api/placeholder/200/200" alt="Luna" class="animal-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa_an4O45YcCJvuOLhYKOhpR0wCRsLMg_sillIyLOsHnu_HFGoIhfdmDjh8bgpw5vO5yM&usqp=CAU" alt="Luna" class="animal-image">
                     <div class="animal-content">
                         <div class="animal-header">
                             <h1 class="animal-name">Luna</h1>
@@ -331,7 +333,7 @@
                 </div>
             
                 <div class="animal-details">
-                    <img src="/api/placeholder/200/200" alt="Max" class="animal-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa_an4O45YcCJvuOLhYKOhpR0wCRsLMg_sillIyLOsHnu_HFGoIhfdmDjh8bgpw5vO5yM&usqp=CAU" alt="Max" class="animal-image">
                     <div class="animal-content">
                         <div class="animal-header">
                             <h1 class="animal-name">Max</h1>
@@ -365,7 +367,7 @@
                 </div>
             
                 <div class="animal-details">
-                    <img src="/api/placeholder/200/200" alt="Michi" class="animal-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBZHhwenWWsNqvSOgvHyXyBUG_sIwEAohSOA&s" alt="Michi" class="animal-image">
                     <div class="animal-content">
                         <div class="animal-header">
                             <h1 class="animal-name">Michi</h1>
@@ -399,7 +401,7 @@
                 </div>
             
                 <div class="animal-details">
-                    <img src="/api/placeholder/200/200" alt="Bella" class="animal-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBZHhwenWWsNqvSOgvHyXyBUG_sIwEAohSOA&s" alt="Bella" class="animal-image">
                     <div class="animal-content">
                         <div class="animal-header">
                             <h1 class="animal-name">Bella</h1>
@@ -433,7 +435,7 @@
                 </div>
             
                 <div class="animal-details">
-                    <img src="/api/placeholder/200/200" alt="Rocky" class="animal-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa_an4O45YcCJvuOLhYKOhpR0wCRsLMg_sillIyLOsHnu_HFGoIhfdmDjh8bgpw5vO5yM&usqp=CAU" alt="Rocky" class="animal-image">
                     <div class="animal-content">
                         <div class="animal-header">
                             <h1 class="animal-name">Rocky</h1>
